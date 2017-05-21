@@ -66,7 +66,7 @@ class blockGradientDescent:
         self.condition_on_inside_step_V = condition_on_inside_step_V #1e-8
         
     def applyBlockGradientDescent(self,b = 1e6,lmbd = (float(1)/4)*100,pas = 1e-3,printflag = 0): 
-        print "******** Start: Apply Block Gradient Descent *****************"
+        print("******** Start: Apply Block Gradient Descent *****************")
         # size of the dataMatrix m1 and m2 
         m1, m2 = self.dataMatrix.shape
         
@@ -170,7 +170,7 @@ class blockGradientDescent:
             outline = "Iteration: "+str(k)+ "\t"+"Iteration for U: "+str(k_inside1)+"\t"+ "Iteration for V:"+str(k_inside2)+"\t"+"eps: "
             outline = outline + str(eps) + '\n'
             if printflag == 1:
-                print outline
+                print(outline)
             out.append(outline) 
-        print "********** End: Apply Block Gradient Descent *****************"
+        print("********** End: Apply Block Gradient Descent *****************")
         return (U,V,crit,out)

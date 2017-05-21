@@ -51,13 +51,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ################## Loading Data into a matrix ################################
-print "************  opening file train.txt **************"
+print("************  opening file train.txt **************")
 try:
     file = open ( 'train.txt' , 'r')
 except:
-    print "Error: Not able to open file"
+    print("Error: Not able to open file")
     
-dataList = [ map(float,line.split()) for line in file ]
+dataList = [ list(map(float,line.split())) for line in file ]
 dataMatrix = np.array(dataList)
 file.close()
 
@@ -85,17 +85,17 @@ dataMatrix = np.add(dataMatrix,1)/2
 ##################### Call blockGradintDescent################################
 shp =  dataMatrix.shape
 if len(shp) != 2:
-    print "Error: Please change the script for image to have a 2d matrix"
-    print "       Current Shape of Matrix is:"+str(shp)
+    print("Error: Please change the script for image to have a 2d matrix")
+    print("       Current Shape of Matrix is:"+str(shp))
 elif np.min(dataMatrix) < 0 or np.max(dataMatrix) > 1:
-    print "Error: Values not between 0 and 1"
-    print "       Please modify script to adjust values"
+    print("Error: Values not between 0 and 1")
+    print("       Please modify script to adjust values")
 else:
-    print"*******Call to blockGradientDescent******"
+    print("*******Call to blockGradientDescent******")
     z = blockGradientDescent(dataMatrix,2)
     z.setConditionOnAllSteps(3e-1,1e-3,1e-3)
     (U,V,crit,out)= z.applyBlockGradientDescent(printflag = 1)
-    print"*******End of blockGradientDescent*******"
+    print("*******End of blockGradientDescent*******")
     ########################## Plot #######################################
     V = V*255
     #U = U*255
